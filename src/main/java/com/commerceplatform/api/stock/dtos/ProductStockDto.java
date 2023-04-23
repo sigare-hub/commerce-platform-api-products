@@ -1,4 +1,4 @@
-package com.commerceplatform.api.stock.dots;
+package com.commerceplatform.api.stock.dtos;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

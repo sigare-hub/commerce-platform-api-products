@@ -1,4 +1,4 @@
-package com.commerceplatform.api.stock.dots;
+package com.commerceplatform.api.stock.dtos;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
