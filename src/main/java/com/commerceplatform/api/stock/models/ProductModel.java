@@ -1,85 +1,68 @@
 package com.commerceplatform.api.stock.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-
-import java.util.UUID;
+import jakarta.persistence.*;
+import lombok.Builder;
 
 @Entity
 @Table(name = "product")
+@Builder
 public class ProductModel {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private UUID id;
+    private Long id;
 
     private String name;
     private String description;
 
-    @Column(name = "video_link")
-    private String videoLink;
+    // TODO: Físico / Digital ou Serviço
+    @Column(name = "product_type", nullable = true)
+    private String productType;
 
-    @Column(name = "sales_price")
-    private Double salesPrice;
+    @Column(name = "sale_price")
+    private Double salePrice;
 
-    @Column(name = "promotional_price")
+    @Column(name = "purchase_price", nullable = true)
+    private Double purchasePrice;
+
+    @Column(name = "promotional_price", nullable = true)
     private Double promotionalPrice;
 
-    // TODO: Físico / Digital ou Serviço
-    @Column(name = "product_type")
-    private String productType;
+    @Column(nullable = true)
     private Boolean available;
 
-    @Column(name = "stock_sku")
+    @Column(name = "stock_sku", nullable = true)
     private String stockSku;
 
-
-    @Column(name = "stock_bar_code")
+    @Column(name = "stock_bar_code", nullable = true)
     private String stockBarCode;
 
     // TODO: Produto com estoque: Limitado / Ilimitado
-    @Column(name = "stock_type")
+    @Column(name = "stock_type", nullable = true)
     private String stockType;
-
-//    private Long quantity;
 
     public ProductModel() {
     }
 
-    public ProductModel(
-            UUID id,
-            String name,
-            String description,
-            String videoLink,
-            Double salesPrice,
-            Double promotionalPrice,
-            String productType,
-            Boolean available,
-            String stockSku,
-            String stockBarCode,
-            String stockType
-//            Long quantity
-    ) {
+    public ProductModel(Long id, String name, String description, String productType, Double salePrice, Double purchasePrice, Double promotionalPrice, Boolean available, String stockSku, String stockBarCode, String stockType) {
         this.id = id;
         this.name = name;
         this.description = description;
-        this.videoLink = videoLink;
-        this.salesPrice = salesPrice;
-        this.promotionalPrice = promotionalPrice;
         this.productType = productType;
+        this.salePrice = salePrice;
+        this.purchasePrice = purchasePrice;
+        this.promotionalPrice = promotionalPrice;
         this.available = available;
         this.stockSku = stockSku;
         this.stockBarCode = stockBarCode;
         this.stockType = stockType;
-//        this.quantity = quantity;
     }
 
-    public UUID getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -99,20 +82,28 @@ public class ProductModel {
         this.description = description;
     }
 
-    public String getVideoLink() {
-        return videoLink;
+    public String getProductType() {
+        return productType;
     }
 
-    public void setVideoLink(String videoLink) {
-        this.videoLink = videoLink;
+    public void setProductType(String productType) {
+        this.productType = productType;
     }
 
-    public Double getSalesPrice() {
-        return salesPrice;
+    public Double getSalePrice() {
+        return salePrice;
     }
 
-    public void setSalesPrice(Double salesPrice) {
-        this.salesPrice = salesPrice;
+    public void setSalePrice(Double salePrice) {
+        this.salePrice = salePrice;
+    }
+
+    public Double getPurchasePrice() {
+        return purchasePrice;
+    }
+
+    public void setPurchasePrice(Double purchasePrice) {
+        this.purchasePrice = purchasePrice;
     }
 
     public Double getPromotionalPrice() {
@@ -121,14 +112,6 @@ public class ProductModel {
 
     public void setPromotionalPrice(Double promotionalPrice) {
         this.promotionalPrice = promotionalPrice;
-    }
-
-    public String getProductType() {
-        return productType;
-    }
-
-    public void setProductType(String productType) {
-        this.productType = productType;
     }
 
     public Boolean getAvailable() {
@@ -162,12 +145,4 @@ public class ProductModel {
     public void setStockType(String stockType) {
         this.stockType = stockType;
     }
-
-//    public Long getQuantity() {
-//        return quantity;
-//    }
-//
-//    public void setQuantity(Long quantity) {
-//        this.quantity = quantity;
-//    }
 }

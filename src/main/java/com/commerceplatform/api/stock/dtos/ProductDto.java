@@ -11,20 +11,22 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class ProductDto {
+    private Long id;
     private String name;
     private String description;
 
-    @JsonProperty("video_link")
-    private String videoLink;
+    @JsonProperty("product_type")
+    private String productType;
 
-    @JsonProperty("sales_price")
-    private Double salesPrice;
+    @JsonProperty("sale_price")
+    private Double salePrice;
+
+    @JsonProperty("purchase_price")
+    private Double purchasePrice;
 
     @JsonProperty("promotional_price")
     private Double promotionalPrice;
 
-    @JsonProperty("product_type")
-    private String productType;
     private Boolean available;
 
     @JsonProperty("stock_sku")
