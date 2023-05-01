@@ -1,5 +1,6 @@
 package com.commerceplatform.api.stock.security.filters;
 
+import com.auth0.jwt.interfaces.Claim;
 import com.commerceplatform.api.stock.security.JwtService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -7,10 +8,18 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.lang.NonNull;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class JwtFilter extends OncePerRequestFilter {
     private final JwtService jwtService;
@@ -33,22 +42,18 @@ public class JwtFilter extends OncePerRequestFilter {
     }
 
     private void authenticateByToken(String token) {
-//        try {
-//            var subject = this.jwtService.getSubject(token);
-//            var user = userRepository.findByEmail(subject);
-//
-//            SecurityContextHolder
-//                    .getContext()
-//                    .setAuthentication(new UsernamePasswordAuthenticationToken(
-//                                    user,
-//                                    null,
-//                                    user.get().getAuthorities()
-//                            )
-//                    );
-//        } catch(Exception e) {
-//            System.out.println(e.getMessage());
-//        }
+        String subject = jwtService.getSubject(token);
+        Map<String, Claim> claims = jwtService.getClaimsFromToken(token);
+        List<String> roles = claims.get("roles").asList(String.class);
 
+        if(roles != null && !roles.isEmpty()) {
+            Collection<? extends GrantedAuthority> authorities = roles.stream()
+                .map(SimpleGrantedAuthority::new)
+                .toList();
+
+            Authentication authentication = new UsernamePasswordAuthenticationToken(subject, null, authorities);
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+        }
     }
 
     private String getHeaderToken(HttpServletRequest request) {

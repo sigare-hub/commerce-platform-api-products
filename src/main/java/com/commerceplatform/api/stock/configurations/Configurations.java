@@ -52,7 +52,7 @@ public class Configurations {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.httpBasic().and().authorizeHttpRequests()
-            .requestMatchers(HttpMethod.POST, ProductRoutes.PRODUCT.getValue()).permitAll()
+            .requestMatchers(HttpMethod.POST, ProductRoutes.PRODUCT.getValue()).hasRole("ADMIN")
             .anyRequest().authenticated().and()
             .csrf().disable()
             .addFilterBefore(jwtFilter(), UsernamePasswordAuthenticationFilter.class)
