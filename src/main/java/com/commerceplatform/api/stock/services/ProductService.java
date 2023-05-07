@@ -46,6 +46,6 @@ public class ProductService extends Validator implements ProductServiceRules {
 
     @Override
     public List<ProductModel> findAll() {
-        return null;
+        return productRepository.findAll();
     }
 }
