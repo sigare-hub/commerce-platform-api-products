@@ -28,23 +28,10 @@ public class ProductModel {
     @Column(name = "promotional_price", nullable = true)
     private Double promotionalPrice;
 
-    @Column(nullable = true)
-    private Boolean available;
-
-    @Column(name = "stock_sku", nullable = true)
-    private String stockSku;
-
-    @Column(name = "stock_bar_code", nullable = true)
-    private String stockBarCode;
-
-    // TODO: Produto com estoque: Limitado / Ilimitado
-    @Column(name = "stock_type", nullable = true)
-    private String stockType;
-
     public ProductModel() {
     }
 
-    public ProductModel(Long id, String name, String description, String productType, Double salePrice, Double purchasePrice, Double promotionalPrice, Boolean available, String stockSku, String stockBarCode, String stockType) {
+    public ProductModel(Long id, String name, String description, String productType, Double salePrice, Double purchasePrice, Double promotionalPrice) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -52,10 +39,6 @@ public class ProductModel {
         this.salePrice = salePrice;
         this.purchasePrice = purchasePrice;
         this.promotionalPrice = promotionalPrice;
-        this.available = available;
-        this.stockSku = stockSku;
-        this.stockBarCode = stockBarCode;
-        this.stockType = stockType;
     }
 
     public Long getId() {
@@ -112,37 +95,5 @@ public class ProductModel {
 
     public void setPromotionalPrice(Double promotionalPrice) {
         this.promotionalPrice = promotionalPrice;
-    }
-
-    public Boolean getAvailable() {
-        return available;
-    }
-
-    public void setAvailable(Boolean available) {
-        this.available = available;
-    }
-
-    public String getStockSku() {
-        return stockSku;
-    }
-
-    public void setStockSku(String stockSku) {
-        this.stockSku = stockSku;
-    }
-
-    public String getStockBarCode() {
-        return stockBarCode;
-    }
-
-    public void setStockBarCode(String stockBarCode) {
-        this.stockBarCode = stockBarCode;
-    }
-
-    public String getStockType() {
-        return stockType;
-    }
-
-    public void setStockType(String stockType) {
-        this.stockType = stockType;
     }
 }
