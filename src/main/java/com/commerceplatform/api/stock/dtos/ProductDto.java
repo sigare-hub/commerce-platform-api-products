@@ -1,5 +1,6 @@
 package com.commerceplatform.api.stock.dtos;
 
+import com.commerceplatform.api.stock.utils.Validator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,7 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class ProductDto {
+public class ProductDto extends Validator {
     private Long id;
     private String name;
     private String description;
@@ -26,4 +27,4 @@ public class ProductDto {
 
     @JsonProperty("promotional_price")
     private Double promotionalPrice;
-}
+ }

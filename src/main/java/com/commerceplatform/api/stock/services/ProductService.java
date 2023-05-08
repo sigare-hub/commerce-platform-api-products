@@ -2,7 +2,7 @@ package com.commerceplatform.api.stock.services;
 
 import com.commerceplatform.api.stock.dtos.ProductDto;
 import com.commerceplatform.api.stock.dtos.validations.ProductDtoValidations;
-import com.commerceplatform.api.stock.mappers.ProductDtoMapper;
+import com.commerceplatform.api.stock.dtos.mappers.ProductDtoMapper;
 import com.commerceplatform.api.stock.models.ProductModel;
 import com.commerceplatform.api.stock.repositories.ProductRepository;
 import com.commerceplatform.api.stock.services.rules.ProductServiceRules;

@@ -1,4 +1,4 @@
-package com.commerceplatform.api.stock.mappers;
+package com.commerceplatform.api.stock.dtos.mappers;
 
 import com.commerceplatform.api.stock.dtos.ProductDto;
 import com.commerceplatform.api.stock.models.ProductModel;
@@ -17,10 +17,6 @@ public class ProductDtoMapper {
             .salePrice(dto.getSalePrice())
             .purchasePrice(dto.getPurchasePrice())
             .promotionalPrice(dto.getPromotionalPrice())
-            .available(dto.getAvailable())
-            .stockBarCode(dto.getStockBarCode())
-            .stockSku(dto.getStockSku())
-            .stockType(dto.getStockType())
             .build();
     }
 }

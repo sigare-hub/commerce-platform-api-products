@@ -1,7 +1,6 @@
 package com.commerceplatform.api.stock.dtos.validations;
 
 import com.commerceplatform.api.stock.dtos.ProductDto;
-import com.commerceplatform.api.stock.utils.Validator;
 
 import java.util.HashMap;
 import java.util.List;
@@ -12,8 +11,6 @@ public class ProductDtoValidations extends ProductDto{
     private static final String DESCRIPTION = "description";
     private static final String SALE_PRICE = "sale_price";
 
-    private Validator validator;
-
     public ProductDtoValidations(ProductDto input) {
         super.setId(input.getId());
         super.setName(input.getName());
@@ -23,16 +20,17 @@ public class ProductDtoValidations extends ProductDto{
         super.setPurchasePrice(input.getPurchasePrice());
         super.setPromotionalPrice(input.getPromotionalPrice());
 
-        validator.nonNull("id", input.getId());
-        validator.isRequired(NAME, input.getName());
-        validator.isRequired(DESCRIPTION, input.getDescription());
-        validator.isRequired(SALE_PRICE, String.valueOf(input.getSalePrice()));
+        super.nonNull("id", input.getId());
+        super.isRequired(NAME, input.getName());
+        super.isRequired(DESCRIPTION, input.getDescription());
+        super.isRequired(SALE_PRICE, String.valueOf(input.getSalePrice()));
 
-        if(Boolean.FALSE.equals(validator.validate())) {
-            Map<String, List<String>> errors = new HashMap<>(validator.getAllErrors());
-            validator.clearErrors();
+        if(Boolean.FALSE.equals(super.validate())) {
+            Map<String, List<String>> errors = new HashMap<>(super.getAllErrors());
+            super.clearErrors();
             System.out.println("error: " + errors);
             throw new IllegalArgumentException("Product is not valid");
         }
+
     }
 }
