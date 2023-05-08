@@ -36,6 +36,8 @@ public class Configurations {
         http.httpBasic().and().authorizeHttpRequests()
             .requestMatchers(HttpMethod.GET, "/product").permitAll()
             .requestMatchers(HttpMethod.POST, ProductRoutes.PRODUCT.getValue()).hasRole("ADMIN")
+            .requestMatchers(HttpMethod.GET, "/category").permitAll()
+            .requestMatchers(HttpMethod.POST, "/category").hasRole("ADMIN")
             .anyRequest().authenticated().and()
             .csrf().disable()
             .addFilterBefore(jwtFilter(), UsernamePasswordAuthenticationFilter.class)
