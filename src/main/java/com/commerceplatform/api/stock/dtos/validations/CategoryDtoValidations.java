@@ -7,15 +7,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class CategoryDtoValidations extends ProductDto {
+public class CategoryDtoValidations extends CategoryDto {
     private static final String DESCRIPTION = "description";
 
     public CategoryDtoValidations(CategoryDto input) {
         super.setId(input.getId());
-        super.setDescription(input.getDescription());
+        super.setName(input.getName());
 
         super.nonNull("id", input.getId());
-        super.isRequired(DESCRIPTION, input.getDescription());
+        super.isRequired(DESCRIPTION, input.getName());
 
         if(Boolean.FALSE.equals(super.validate())) {
             Map<String, List<String>> errors = new HashMap<>(super.getAllErrors());

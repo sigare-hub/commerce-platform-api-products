@@ -12,14 +12,14 @@ public class CategoryModel {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    private String description;
+    private String name;
 
     public CategoryModel() {
     }
 
-    public CategoryModel(Long id, String description) {
+    public CategoryModel(Long id, String name) {
         this.id = id;
-        this.description = description;
+        this.name = name;
     }
 
     public Long getId() {
@@ -30,11 +30,11 @@ public class CategoryModel {
         this.id = id;
     }
 
-    public String getDescription() {
-        return description;
+    public String getName() {
+        return name;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setName(String name) {
+        this.name = name;
     }
 }

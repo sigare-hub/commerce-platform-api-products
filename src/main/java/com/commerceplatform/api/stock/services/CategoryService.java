@@ -21,12 +21,40 @@ public class CategoryService implements CategoryServiceRules {
     @Override
     public CategoryModel create(CategoryDto input) {
         CategoryDtoValidations validatedInput = new CategoryDtoValidations(input);
-        var product = CategoryDtoMapper.mapper(validatedInput);
-        return categoryRepository.save(product);
+        var category = CategoryDtoMapper.mapper(validatedInput);
+
+        if(Boolean.TRUE.equals(existsCategory(category.getName()))) {
+            throw new RuntimeException("Bad request exception: category already exist");
+        }
+
+        return categoryRepository.save(category);
+    }
+
+    @Override
+    public CategoryModel update(CategoryDto input) {
+        findById(input.getId());
+        return categoryRepository.save(CategoryDtoMapper.mapper(input));
+    }
+
+    @Override
+    public void delete(Long id) {
+        findById(id);
+        categoryRepository.deleteById(id);
+    }
+
+    @Override
+    public CategoryModel findById(Long id) {
+        return categoryRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Category not found"));
     }
 
     @Override
     public List<CategoryModel> findAll() {
         return categoryRepository.findAll();
+    }
+
+    @Override
+    public boolean existsCategory(String name) {
+        return categoryRepository.existsByNameIgnoreCaseAndWithoutAccent(name);
     }
 }

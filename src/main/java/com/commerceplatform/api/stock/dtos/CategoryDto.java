@@ -12,5 +12,5 @@ import lombok.NoArgsConstructor;
 @Builder
 public class CategoryDto extends Validator {
     private Long id;
-    private String description;
+    private String name;
 }

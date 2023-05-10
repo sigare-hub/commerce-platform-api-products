@@ -27,5 +27,21 @@ public class CategoryController {
     public ResponseEntity<List<CategoryModel>> findAll() {
         return ResponseEntity.status(HttpStatus.OK).body(categoryService.findAll());
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<CategoryModel> findById(@PathVariable("id") Long id) {
+        return ResponseEntity.status(HttpStatus.OK).body(categoryService.findById(id));
+    }
+
+    @PutMapping
+    public ResponseEntity<CategoryModel> update(@RequestBody CategoryDto input) {
+        return ResponseEntity.status(HttpStatus.OK).body(categoryService.update(input));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable("id") Long id) {
+        categoryService.delete(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
+    }
 }
 
