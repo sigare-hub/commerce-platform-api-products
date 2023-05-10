@@ -26,6 +26,24 @@ public class ProductService implements ProductServiceRules {
     }
 
     @Override
+    public ProductModel update(ProductDto input) {
+        findById(input.getId());
+        return productRepository.save(ProductDtoMapper.mapper(input));
+    }
+
+    @Override
+    public void delete(Long id) {
+        findById(id);
+        productRepository.deleteById(id);
+    }
+
+    @Override
+    public ProductModel findById(Long id) {
+        return productRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Product not found"));
+    }
+
+    @Override
     public List<ProductModel> findAll() {
         return productRepository.findAll();
     }

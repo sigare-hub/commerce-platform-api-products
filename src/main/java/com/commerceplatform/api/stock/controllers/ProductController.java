@@ -18,13 +18,29 @@ public class ProductController {
         this.productService = productService;
     }
 
+    @GetMapping
+    public ResponseEntity<List<ProductModel>> findAll() {
+        return ResponseEntity.status(HttpStatus.OK).body(productService.findAll());
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<ProductModel> findById(@PathVariable("id") Long id) {
+        return ResponseEntity.status(HttpStatus.OK).body(productService.findById(id));
+    }
+
     @PostMapping
     public ResponseEntity<ProductModel> create(@RequestBody ProductDto input) {
         return ResponseEntity.status(HttpStatus.OK).body(productService.create(input));
     }
 
-    @GetMapping
-    public ResponseEntity<List<ProductModel>> findAll() {
-        return ResponseEntity.status(HttpStatus.OK).body(productService.findAll());
+    @PutMapping
+    public ResponseEntity<ProductModel> update(@RequestBody ProductDto input) {
+        return ResponseEntity.status(HttpStatus.OK).body(productService.update(input));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable("id") Long id) {
+        productService.delete(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
     }
 }
