@@ -1,5 +1,7 @@
 package com.commerceplatform.api.stock.services.rules;
 
+import java.util.List;
+
 public interface ProductCategoryServiceRules {
 //    createProductCategory(ProductCategory productCategory): Este método cria uma nova associação entre um produto e uma categoria, adicionando uma nova instância de ProductCategory ao banco de dados.
 //
@@ -12,4 +14,6 @@ public interface ProductCategoryServiceRules {
 //            findProductCategoriesByCategoryId(Long categoryId): Este método retorna uma lista de todas as associações entre uma categoria e seus produtos correspondentes com base no ID da categoria.
 //
 //    findProductCategoryById(Long productCategoryId): Este método retorna uma associação específica entre um produto e uma categoria com base no ID da associação
+    void assignCategoriesToProduct(Long productId, List<Long> categoryIds);
+
 }

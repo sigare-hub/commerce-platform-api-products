@@ -42,6 +42,7 @@ public class Configurations {
             .requestMatchers(HttpMethod.POST, "/category").hasRole("ADMIN")
             .requestMatchers(HttpMethod.PUT, "/category").hasRole("ADMIN")
             .requestMatchers(HttpMethod.DELETE, "/category").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.POST, "/product-category/**").hasRole("ADMIN")
             .anyRequest().authenticated().and()
             .csrf().disable()
             .addFilterBefore(jwtFilter(), UsernamePasswordAuthenticationFilter.class)
