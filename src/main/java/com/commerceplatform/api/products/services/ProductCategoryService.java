@@ -56,12 +56,17 @@ public class ProductCategoryService implements ProductCategoryServiceRules {
         }
     }
 
+    @Override
     @Transactional
     public List<ProductWithCategoriesDto> findAllProductsWithCategories() {
         List<ProductModel> products = productService.findAll();
         List<ProductWithCategoriesDto> productWithCategories = new ArrayList<>();
 
         for (ProductModel product : products) {
+            /**
+             * Busca as categorias que estão associadas a um determinado produto através da tabela product_category. 
+             * Se eu encontrar um produto com uma categoria associada, pego a categoria dele e retorno somente os dados da categoria.
+             */
             List<CategoryModel> categories = productCategoryRepository.findByProduct(product)
                 .stream()
                 .map(ProductCategory::getCategoryModel).toList();
