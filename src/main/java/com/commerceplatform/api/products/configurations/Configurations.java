@@ -27,7 +27,9 @@ public class Configurations {
     }
 
     @Bean
-    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
+    public AuthenticationManager authenticationManager(
+            AuthenticationConfiguration authenticationConfiguration
+    ) throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
     }
 
@@ -38,6 +40,7 @@ public class Configurations {
             .requestMatchers(HttpMethod.POST, ProductRoutes.PRODUCT.getValue()).hasRole("ADMIN")
             .requestMatchers(HttpMethod.PUT, "/product").hasRole("ADMIN")
             .requestMatchers(HttpMethod.DELETE, "/product").hasRole("ADMIN")
+            .requestMatchers(HttpMethod.GET, "/product/products").permitAll()
             .requestMatchers(HttpMethod.GET, "/category").permitAll()
             .requestMatchers(HttpMethod.POST, "/category").hasRole("ADMIN")
             .requestMatchers(HttpMethod.PUT, "/category").hasRole("ADMIN")

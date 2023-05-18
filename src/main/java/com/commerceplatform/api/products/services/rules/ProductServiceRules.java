@@ -11,4 +11,5 @@ public interface ProductServiceRules {
     void delete(Long id);
     ProductModel findById(Long id);
     List<ProductModel> findAll();
+    List<ProductModel> getProductsByIds(List<Long> ids);
 }

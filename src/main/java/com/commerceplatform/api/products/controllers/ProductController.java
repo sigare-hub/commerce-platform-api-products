@@ -1,6 +1,7 @@
 package com.commerceplatform.api.products.controllers;
 
 import com.commerceplatform.api.products.dtos.ProductDto;
+import com.commerceplatform.api.products.dtos.inputs.GetProductsByIds;
 import com.commerceplatform.api.products.models.ProductModel;
 import com.commerceplatform.api.products.services.ProductService;
 import org.springframework.http.HttpStatus;
@@ -26,6 +27,12 @@ public class ProductController {
     @GetMapping("/{id}")
     public ResponseEntity<ProductModel> findById(@PathVariable("id") Long id) {
         return ResponseEntity.status(HttpStatus.OK).body(productService.findById(id));
+    }
+
+    @GetMapping
+    @RequestMapping("/by-ids")
+    public ResponseEntity<List<ProductModel>> getProductsByIds(@RequestBody GetProductsByIds input) {
+        return ResponseEntity.status(HttpStatus.OK).body(productService.getProductsByIds(input.ids()));
     }
 
     @PostMapping
