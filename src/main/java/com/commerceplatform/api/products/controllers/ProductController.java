@@ -29,15 +29,14 @@ public class ProductController {
         return ResponseEntity.status(HttpStatus.OK).body(productService.findById(id));
     }
 
-    @GetMapping
-    @RequestMapping("/by-ids")
-    public ResponseEntity<List<ProductModel>> getProductsByIds(@RequestBody GetProductsByIds input) {
-        return ResponseEntity.status(HttpStatus.OK).body(productService.getProductsByIds(input.ids()));
+    @GetMapping("/by-ids")
+    public ResponseEntity<List<ProductModel>> getProductsByIds(@RequestParam("ids") List<Long> ids) {
+        return ResponseEntity.status(HttpStatus.OK).body(productService.getProductsByIds(ids));
     }
 
     @PostMapping
     public ResponseEntity<ProductModel> create(@RequestBody ProductDto input) {
-        return ResponseEntity.status(HttpStatus.OK).body(productService.create(input));
+        return ResponseEntity.status(HttpStatus.CREATED).body(productService.create(input));
     }
 
     @PutMapping

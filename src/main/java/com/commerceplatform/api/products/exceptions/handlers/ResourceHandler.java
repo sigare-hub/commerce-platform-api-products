@@ -1,5 +1,6 @@
 package com.commerceplatform.api.products.exceptions.handlers;
 
+import com.auth0.jwt.exceptions.TokenExpiredException;
 import com.commerceplatform.api.products.dtos.ErrorResponseDto;
 import com.commerceplatform.api.products.exceptions.*;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -98,8 +99,8 @@ public class ResourceHandler {
             .build());
     }
 
-    @ExceptionHandler(TokenExpirationException.class)
-    public ResponseEntity<ErrorResponseDto> tokenExpirationException(TokenExpirationException h) {
+    @ExceptionHandler(TokenExpiredException.class)
+    public ResponseEntity<ErrorResponseDto> tokenExpirationException(TokenExpiredException h) {
         return ResponseEntity.status(HttpStatus.METHOD_NOT_ALLOWED).body(ErrorResponseDto
                 .builder()
                 .message(h.getMessage())

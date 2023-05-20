@@ -4,7 +4,6 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.Claim;
 import com.auth0.jwt.interfaces.DecodedJWT;
-import com.commerceplatform.api.products.exceptions.TokenExpirationException;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
@@ -34,7 +33,7 @@ public class JwtService {
                 .sign(Algorithm.HMAC256(secret));
     }
 
-    public LocalDateTime getExpirationDate(String token) throws TokenExpirationException {
+    public LocalDateTime getExpirationDate(String token) {
         var jwt = JWT.require(Algorithm.HMAC256(secret))
                 .withIssuer(ISSUER)
                 .build()

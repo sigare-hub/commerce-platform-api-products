@@ -1,7 +1,6 @@
 package com.commerceplatform.api.products.configurations;
 
 import com.commerceplatform.api.products.routes.ProductRoutes;
-
 import com.commerceplatform.api.products.security.JwtService;
 import com.commerceplatform.api.products.security.filters.JwtFilter;
 import org.springframework.context.annotation.Bean;
@@ -22,6 +21,10 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class Configurations {
     private final JwtService jwtService;
 
+    private static final String PRODUCT_ROUTE = "/product";
+    private static final String CATEGORY_ROUTE = "/category";
+    private static final String ROLE_ADMIN = "ADMIN";
+
     public Configurations(JwtService jwtService) {
         this.jwtService = jwtService;
     }
@@ -36,17 +39,17 @@ public class Configurations {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.httpBasic().and().authorizeHttpRequests()
-            .requestMatchers(HttpMethod.GET, "/product").permitAll()
-            .requestMatchers(HttpMethod.POST, ProductRoutes.PRODUCT.getValue()).hasRole("ADMIN")
-            .requestMatchers(HttpMethod.PUT, "/product").hasRole("ADMIN")
-            .requestMatchers(HttpMethod.DELETE, "/product").hasRole("ADMIN")
-            .requestMatchers(HttpMethod.GET, "/product/products").permitAll()
-            .requestMatchers(HttpMethod.GET, "/category").permitAll()
-            .requestMatchers(HttpMethod.POST, "/category").hasRole("ADMIN")
-            .requestMatchers(HttpMethod.PUT, "/category").hasRole("ADMIN")
-            .requestMatchers(HttpMethod.DELETE, "/category").hasRole("ADMIN")
+            .requestMatchers(HttpMethod.GET, PRODUCT_ROUTE).permitAll()
+            .requestMatchers(HttpMethod.POST, ProductRoutes.PRODUCT.getValue()).hasRole(ROLE_ADMIN)
+            .requestMatchers(HttpMethod.PUT, PRODUCT_ROUTE).hasRole(ROLE_ADMIN)
+            .requestMatchers(HttpMethod.DELETE, PRODUCT_ROUTE).hasRole(ROLE_ADMIN)
+            .requestMatchers(HttpMethod.GET, "/product/by-ids").permitAll()
+            .requestMatchers(HttpMethod.GET, CATEGORY_ROUTE).permitAll()
+            .requestMatchers(HttpMethod.POST, CATEGORY_ROUTE).hasRole(ROLE_ADMIN)
+            .requestMatchers(HttpMethod.PUT, CATEGORY_ROUTE).hasRole(ROLE_ADMIN)
+            .requestMatchers(HttpMethod.DELETE, CATEGORY_ROUTE).hasRole(ROLE_ADMIN)
             .requestMatchers(HttpMethod.GET, "/product-category").permitAll()
-            .requestMatchers(HttpMethod.POST, "/product-category/**").hasRole("ADMIN")
+            .requestMatchers(HttpMethod.POST, "/product-category/**").hasRole(ROLE_ADMIN)
             .anyRequest().authenticated().and()
             .csrf().disable()
             .addFilterBefore(jwtFilter(), UsernamePasswordAuthenticationFilter.class)
