@@ -1,5 +1,6 @@
 package com.commerceplatform.api.products.dtos;
 
+import com.commerceplatform.api.products.enums.ProductStockType;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -23,5 +24,5 @@ public class ProductStockDto {
     private String stockBarCode;
 
     @JsonProperty("stock_type")
-    private String stockType;
+    private ProductStockType stockType;
 }
