@@ -1,8 +1,8 @@
 package com.commerceplatform.api.products.dtos.mappers;
 
 import com.commerceplatform.api.products.dtos.ProductWithCategoriesDto;
-import com.commerceplatform.api.products.models.CategoryModel;
-import com.commerceplatform.api.products.models.ProductModel;
+import com.commerceplatform.api.products.models.category.CategoryModel;
+import com.commerceplatform.api.products.models.product.ProductModel;
 
 import java.util.List;
 

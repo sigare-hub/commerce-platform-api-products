@@ -1,8 +1,8 @@
 package com.commerceplatform.api.products.dtos.mappers;
 
 import com.commerceplatform.api.products.dtos.ProductStockDto;
-import com.commerceplatform.api.products.models.ProductModel;
-import com.commerceplatform.api.products.models.ProductStockModel;
+import com.commerceplatform.api.products.models.product.ProductModel;
+import com.commerceplatform.api.products.models.inventory.ProductStockModel;
 
 public class ProductStockMapper {
     private ProductStockMapper() {

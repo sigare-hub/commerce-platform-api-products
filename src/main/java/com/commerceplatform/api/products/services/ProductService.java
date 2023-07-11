@@ -4,7 +4,7 @@ import com.commerceplatform.api.products.dtos.ProductDto;
 import com.commerceplatform.api.products.dtos.validations.ProductDtoValidations;
 import com.commerceplatform.api.products.dtos.mappers.ProductDtoMapper;
 import com.commerceplatform.api.products.exceptions.BadRequestException;
-import com.commerceplatform.api.products.models.ProductModel;
+import com.commerceplatform.api.products.models.product.ProductModel;
 import com.commerceplatform.api.products.repositories.ProductRepository;
 import com.commerceplatform.api.products.services.rules.ProductServiceRules;
 import org.springframework.stereotype.Service;

@@ -1,7 +1,6 @@
 package com.commerceplatform.api.products.dtos;
 
-import com.commerceplatform.api.products.models.CategoryModel;
-import com.commerceplatform.api.products.models.ProductModel;
+import com.commerceplatform.api.products.models.category.CategoryModel;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 

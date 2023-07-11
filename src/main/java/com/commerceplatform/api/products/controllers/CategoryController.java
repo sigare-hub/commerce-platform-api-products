@@ -1,7 +1,7 @@
 package com.commerceplatform.api.products.controllers;
 
 import com.commerceplatform.api.products.dtos.CategoryDto;
-import com.commerceplatform.api.products.models.CategoryModel;
+import com.commerceplatform.api.products.models.category.CategoryModel;
 import com.commerceplatform.api.products.services.CategoryService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

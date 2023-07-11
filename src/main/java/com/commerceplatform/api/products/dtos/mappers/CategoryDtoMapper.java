@@ -1,7 +1,7 @@
 package com.commerceplatform.api.products.dtos.mappers;
 
 import com.commerceplatform.api.products.dtos.CategoryDto;
-import com.commerceplatform.api.products.models.CategoryModel;
+import com.commerceplatform.api.products.models.category.CategoryModel;
 
 public class CategoryDtoMapper {
     private CategoryDtoMapper() {

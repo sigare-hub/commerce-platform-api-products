@@ -4,7 +4,7 @@ import com.commerceplatform.api.products.dtos.ProductStockDto;
 import com.commerceplatform.api.products.dtos.integrations.OrderItemDto;
 import com.commerceplatform.api.products.dtos.mappers.ProductStockMapper;
 import com.commerceplatform.api.products.exceptions.NotFoundException;
-import com.commerceplatform.api.products.models.ProductStockModel;
+import com.commerceplatform.api.products.models.inventory.ProductStockModel;
 import com.commerceplatform.api.products.repositories.ProductRepository;
 import com.commerceplatform.api.products.repositories.ProductStockRepository;
 import jakarta.transaction.Transactional;

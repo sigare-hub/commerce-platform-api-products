@@ -3,7 +3,7 @@ package com.commerceplatform.api.products.services;
 import com.commerceplatform.api.products.dtos.CategoryDto;
 import com.commerceplatform.api.products.dtos.mappers.CategoryDtoMapper;
 import com.commerceplatform.api.products.dtos.validations.CategoryDtoValidations;
-import com.commerceplatform.api.products.models.CategoryModel;
+import com.commerceplatform.api.products.models.category.CategoryModel;
 import com.commerceplatform.api.products.repositories.CategoryRepository;
 import com.commerceplatform.api.products.services.rules.CategoryServiceRules;
 import org.springframework.stereotype.Service;

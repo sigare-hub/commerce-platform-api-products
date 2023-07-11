@@ -1,6 +1,6 @@
 package com.commerceplatform.api.products.repositories;
 
-import com.commerceplatform.api.products.models.ProductStockModel;
+import com.commerceplatform.api.products.models.inventory.ProductStockModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

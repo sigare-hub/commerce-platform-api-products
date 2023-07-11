@@ -1,5 +1,6 @@
-package com.commerceplatform.api.products.models;
+package com.commerceplatform.api.products.models.product;
 
+import com.commerceplatform.api.products.models.category.CategoryModel;
 import jakarta.persistence.*;
 
 @Entity

@@ -1,13 +1,11 @@
 package com.commerceplatform.api.products.models;
 
-import com.commerceplatform.api.products.enums.ProductStockType;
+import com.commerceplatform.api.products.models.product.ProductModel;
 import jakarta.persistence.*;
-import lombok.Builder;
 
-@Builder
 @Entity
-@Table(name = "product_stock")
-public class ProductStockModel {
+@Table(name = "inventory")
+public class InventoryModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -19,25 +17,22 @@ public class ProductStockModel {
 
     private Long quantity;
 
-//    SKU (Unidade de manutenção de estoque)
     @Column(name = "stock_sku")
     private String stockSku;
 
-//    Código de barras (ISBN, UPC, GTIN etc.)
     @Column(name = "stock_bar_code")
     private String stockBarCode;
 
-    // Produto fisico / Digital
     @Column(name = "stock_type")
     private String stockType;
 
     @Column(nullable = true)
     private Boolean available;
 
-    public ProductStockModel() {
+    public InventoryModel() {
     }
 
-    public ProductStockModel(Long id, ProductModel productModel, Long quantity, String stockSku, String stockBarCode, String stockType, Boolean available) {
+    public InventoryModel(Long id, ProductModel productModel, Long quantity, String stockSku, String stockBarCode, String stockType, Boolean available) {
         this.id = id;
         this.productModel = productModel;
         this.quantity = quantity;
@@ -92,16 +87,7 @@ public class ProductStockModel {
     }
 
     public void setStockType(String stockType) {
-        boolean validStockType = false;
-        for (ProductStockType enumValue : ProductStockType.values()) {
-            if (enumValue.equals(stockType)) {
-                validStockType = true;
-                break;
-            }
-        }
-        if (!validStockType) {
-            throw new IllegalArgumentException("Invalid stock type");
-        }
+        this.stockType = stockType;
     }
 
     public Boolean getAvailable() {

@@ -1,7 +1,7 @@
 package com.commerceplatform.api.products.services.rules;
 
 import com.commerceplatform.api.products.dtos.CategoryDto;
-import com.commerceplatform.api.products.models.CategoryModel;
+import com.commerceplatform.api.products.models.category.CategoryModel;
 
 import java.util.List;
 

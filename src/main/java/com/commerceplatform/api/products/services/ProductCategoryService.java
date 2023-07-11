@@ -2,9 +2,9 @@ package com.commerceplatform.api.products.services;
 
 import com.commerceplatform.api.products.dtos.ProductWithCategoriesDto;
 import com.commerceplatform.api.products.dtos.mappers.ProductWithCategoriesDtoMapper;
-import com.commerceplatform.api.products.models.CategoryModel;
-import com.commerceplatform.api.products.models.ProductCategory;
-import com.commerceplatform.api.products.models.ProductModel;
+import com.commerceplatform.api.products.models.category.CategoryModel;
+import com.commerceplatform.api.products.models.product.ProductCategory;
+import com.commerceplatform.api.products.models.product.ProductModel;
 import com.commerceplatform.api.products.repositories.ProductCategoryRepository;
 import com.commerceplatform.api.products.services.rules.ProductCategoryServiceRules;
 import jakarta.transaction.Transactional;

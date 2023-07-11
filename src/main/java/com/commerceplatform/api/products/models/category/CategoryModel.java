@@ -1,4 +1,4 @@
-package com.commerceplatform.api.products.models;
+package com.commerceplatform.api.products.models.category;
 
 import jakarta.persistence.*;
 import lombok.Builder;
