@@ -1,5 +1,6 @@
 package com.commerceplatform.api.products.models;
 
+import com.commerceplatform.api.products.enums.ProductStockType;
 import jakarta.persistence.*;
 
 @Entity
@@ -16,12 +17,15 @@ public class ProductStockModel {
 
     private Long quantity;
 
+//    SKU (Unidade de manutenção de estoque)
     @Column(name = "stock_sku")
     private String stockSku;
 
+//    Código de barras (ISBN, UPC, GTIN etc.)
     @Column(name = "stock_bar_code")
     private String stockBarCode;
 
+    // Produto fisico / Digital
     @Column(name = "stock_type")
     private String stockType;
 
@@ -86,7 +90,16 @@ public class ProductStockModel {
     }
 
     public void setStockType(String stockType) {
-        this.stockType = stockType;
+        boolean validStockType = false;
+        for (ProductStockType enumValue : ProductStockType.values()) {
+            if (enumValue.equals(stockType)) {
+                validStockType = true;
+                break;
+            }
+        }
+        if (!validStockType) {
+            throw new IllegalArgumentException("Invalid stock type");
+        }
     }
 
     public Boolean getAvailable() {
