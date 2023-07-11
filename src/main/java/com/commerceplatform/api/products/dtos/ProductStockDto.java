@@ -14,7 +14,8 @@ import java.util.UUID;
 @NoArgsConstructor
 @Builder
 public class ProductStockDto {
-    private UUID productId;
+    private Long id;
+    private Long productId;
     private Long quantity;
 
     @JsonProperty("stock_sku")
@@ -25,4 +26,5 @@ public class ProductStockDto {
 
     @JsonProperty("stock_type")
     private ProductStockType stockType;
+    private Boolean available;
 }

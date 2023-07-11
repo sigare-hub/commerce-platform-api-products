@@ -2,7 +2,9 @@ package com.commerceplatform.api.products.models;
 
 import com.commerceplatform.api.products.enums.ProductStockType;
 import jakarta.persistence.*;
+import lombok.Builder;
 
+@Builder
 @Entity
 @Table(name = "product_stock")
 public class ProductStockModel {
