@@ -29,25 +29,25 @@ public class ProductStockService {
     }
 
 
-    public void updateStockQuantityByProductId(Long productId, int newQuantity) {
-        // adicionar logica pra retornar lista de erros caso os produtos deem um problema de estoque
-        var stock = productStockRepository.findByProductId(productId)
-            .orElseThrow(() -> new NotFoundException("Product stock not found"));
-
-        var updatedQuantity = stock.getQuantity() - newQuantity;
-
-        if(updatedQuantity <= 0) {
-            throw new IllegalArgumentException("A quantidade solicitada ultrapassa o permitido no estoque");
-        }
-        stock.setQuantity(updatedQuantity);
-
-        productStockRepository.save(stock);
-    }
-
-    @Transactional
-    public void updateStockBasedInOrderItems(List<OrderItemDto> orderItemDtos) {
-        for(OrderItemDto orderItemDto : orderItemDtos) {
-           updateStockQuantityByProductId(orderItemDto.getProductId(), orderItemDto.getQuantity());
-        }
-    }
+//    public void updateStockQuantityByProductId(Long productId, int newQuantity) {
+//        // adicionar logica pra retornar lista de erros caso os produtos deem um problema de estoque
+//        var stock = productStockRepository.findByProductId(productId)
+//            .orElseThrow(() -> new NotFoundException("Product stock not found"));
+//
+//        var updatedQuantity = stock.getQuantity() - newQuantity;
+//
+//        if(updatedQuantity <= 0) {
+//            throw new IllegalArgumentException("A quantidade solicitada ultrapassa o permitido no estoque");
+//        }
+//        stock.setQuantity(updatedQuantity);
+//
+//        productStockRepository.save(stock);
+//    }
+//
+//    @Transactional
+//    public void updateStockBasedInOrderItems(List<OrderItemDto> orderItemDtos) {
+//        for(OrderItemDto orderItemDto : orderItemDtos) {
+//           updateStockQuantityByProductId(orderItemDto.getProductId(), orderItemDto.getQuantity());
+//        }
+//    }
 }

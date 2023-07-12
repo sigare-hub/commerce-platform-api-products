@@ -50,6 +50,7 @@ public class Configurations {
             .requestMatchers(HttpMethod.DELETE, CATEGORY_ROUTE).hasRole(ROLE_ADMIN)
             .requestMatchers(HttpMethod.GET, "/product-category").permitAll()
             .requestMatchers(HttpMethod.POST, "/product-category/**").hasRole(ROLE_ADMIN)
+            .requestMatchers(HttpMethod.POST, "/inventory").permitAll()
             .anyRequest().authenticated().and()
             .csrf().disable()
             .addFilterBefore(jwtFilter(), UsernamePasswordAuthenticationFilter.class)

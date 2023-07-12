@@ -11,7 +11,7 @@ import lombok.Builder;
 public class ProductStockModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(name = "id", nullable = true)
     private Long id;
 
     @ManyToOne
@@ -96,7 +96,7 @@ public class ProductStockModel {
         boolean validStockType = false;
         for (ProductStockType enumValue : ProductStockType.values()) {
             if (enumValue.equals(stockType)) {
-                validStockType = true;
+                this.stockType = stockType;
                 break;
             }
         }
